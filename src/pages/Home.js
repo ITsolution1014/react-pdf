@@ -68,7 +68,7 @@ const Home = () => {
             <MenuItem value={3}>Location</MenuItem>
           </Select>
         </FormControl>
-        <PDFDownloadLink style={{textDecoration:"none"}} document={<MyDocument data={tableInfo} />} fileName="somename.pdf">
+        <PDFDownloadLink style={{textDecoration:"none"}} document={<MyDocument selectDate = {date} data={tableInfo} />} fileName="somename.pdf">
         {({ blob, url, loading, error }) =>
           loading ? (
             "Loading document..."
@@ -124,7 +124,7 @@ const Home = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      
+      {/* <MyDocument selectDate = {date} data={tableInfo} /> */}
     </div>
   );
 };

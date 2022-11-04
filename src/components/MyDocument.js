@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
 });
 
 const MyDocument = (props) => {
-  const { data } = props;
+  const { selectDate, data } = props;
   const [date, setDate] = useState("");
   const [year, setYear] = useState("");
   const [calendarWeek, setCalendarWeek] = useState([]);
@@ -146,9 +146,6 @@ const MyDocument = (props) => {
     let d = currentDate.getDate();
     let m = currentDate.getMonth() + 1;
     let y = currentDate.getFullYear();
-
-    const calDate = m + "." + d + "." + y;
-    setDate(calDate);
     setYear(y);
 
     const startDate = new Date(currentDate.getFullYear(), 0, 1);
@@ -162,8 +159,15 @@ const MyDocument = (props) => {
     }
     setDays(weekDays);
     setCalendarWeek(calendartWeek);
-  
   },[])
+
+  useEffect(() => {
+    var calDate = "";
+    if(selectDate === 1 ) calDate = "12.04.2022";
+    else if(selectDate ===2) calDate = "08.11.1988";
+    else if(selectDate ===3) calDate = "05.08.2016";
+    setDate(calDate);
+  },[selectDate]);
 
   return (
     // <PDFViewer width="1000" height="2000">
@@ -262,7 +266,7 @@ const MyDocument = (props) => {
           </View>
         </Page>
       </Document>
-    // </PDFViewer>
+    //  </PDFViewer>
   );
 };
 export default MyDocument;
